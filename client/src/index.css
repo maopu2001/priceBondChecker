@@ -1,11 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Playwrite+AT:ital,wght@0,100..400;1,100..400&display=swap");
+
 body {
   width: 100%;
   height: 100%;
   text-align: center;
+  font-family: sans-serif;
+  font-size: 1rem;
+}
+
+h1 {
+  font-family: "Comic Neue";
 }
 
 #tabList * {
-  width: 150px;
+  width: 155px;
   height: 30px;
   margin: 0px 20px 10px 20px;
   border-radius: 5px;
@@ -15,28 +23,60 @@ body {
   max-width: 600px;
   width: 80%;
   height: 100px;
-  background: rgb(185, 185, 185);
-  align-content: center;
-  border-radius: 5px;
+  padding: 5px;
   text-align: center;
+  /* border style */
+  border-radius: 5px;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
 }
 
 #inputBondFile {
-  max-width: 500px;
-  width: 80%;
-  height: 100px;
-  padding-left: 100px;
-  background: rgb(185, 185, 185);
-  align-content: center;
-  border-radius: 5px;
-  text-align: center;
-}
-
-#submitBtn {
-  margin-top: 20px;
   max-width: 600px;
   width: 80%;
+  height: 100px;
+  padding: 5px;
+  align-content: center;
+  font-style: italic;
+  /* border style */
+  border-radius: 5px;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+}
+
+#inputBondFile::file-selector-button {
+  display: none;
+}
+
+#submitBtn,
+#resetBtn {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  max-width: 600px;
+  width: 80%;
+  padding: 5px;
   height: 50px;
   border-radius: 5px;
+  font-size: 1.2rem;
+}
+
+#resultData {
+  margin: auto;
+  max-width: 580px;
+  width: 80%;
+  padding: 10px;
+  vertical-align: middle;
+  overflow: auto;
+  /* border style */
+  border-radius: 5px;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+}
+
+table {
   margin-bottom: 10px;
+  text-align: center;
 }

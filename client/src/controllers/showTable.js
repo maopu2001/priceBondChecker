@@ -1,13 +1,22 @@
 import { getResultData } from "./apiCall";
 
-export const showResult = async (input) => {
+export const showTable = async (input) => {
   try {
-    // Clearing Previous resultData
-    const resultData = document.getElementById("resultData");
-    resultData.innerHTML = "";
+    const searchDiv = document.getElementById("searchDiv");
+    const resultDiv = document.getElementById("resultDiv");
+    searchDiv.setAttribute("hidden", true);
+    resultDiv.removeAttribute("hidden");
 
-    // Getting new result
-    const result = await getResultData(input);
+    const resultData = document.getElementById("resultData");
+    // Getting new result and loading results
+    let result,
+      isLoading = true;
+    while (isLoading) {
+      resultData.innerHTML = `<img src="loading.gif" width="100" height"100"/>`;
+      result = await getResultData(input);
+      isLoading = false;
+    }
+    resultData.innerHTML = "";
 
     //Parsing new resultData
     const temp = document.createElement("html");

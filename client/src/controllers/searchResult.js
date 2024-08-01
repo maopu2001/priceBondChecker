@@ -1,4 +1,4 @@
-import { showResult } from "./showResult.js";
+import { showTable } from "./showTable.js";
 
 export const searchResult = () => {
   const inputText = document.getElementById("inputBondText");
@@ -15,7 +15,8 @@ export const searchResult = () => {
       const text = e.target.result;
       input = text;
       console.log(input);
-      showResult(input);
+      showTable(input);
+      return;
     };
 
     reader.onerror = (error) => {
@@ -26,8 +27,8 @@ export const searchResult = () => {
     reader.readAsText(file);
   } else if (inputText && inputText.value) {
     input = inputText.value;
-    console.log(input);
-    showResult(input);
+    showTable(input);
+    return;
   } else {
     alert("No input found");
     return;
