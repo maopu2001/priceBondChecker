@@ -1,25 +1,30 @@
-import { Component } from "react";
-import { showResult } from "./controllers/showResult";
+import { searchResult } from "./controllers/searchResult";
+import { Button, Input, Tabs, TabPanel, TabsList, Tab } from "@mui/base";
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <h1>Price Bond Checker</h1>
-        <form className="dataForm">
-          <textarea
+export default function App() {
+  return (
+    <>
+      <h1>Price Bond Checker</h1>
+      <Tabs defaultValue={0}>
+        <TabsList id="tabList">
+          <Tab value={0}>Text</Tab>
+          <Tab value={1}>File</Tab>
+        </TabsList>
+        <TabPanel value={0}>
+          <Input
             id="inputBondText"
             placeholder="Input Price Bond Numbers Here"
-          ></textarea>
-          <button type="button" id="submitBtn" onClick={showResult}>
-            Submit
-          </button>
-        </form>
+          />
+        </TabPanel>
+        <TabPanel value={1}>
+          <Input id="inputBondFile" type="file" />
+        </TabPanel>
+      </Tabs>
 
-        <div id="resultData"></div>
-      </div>
-    );
-  }
+      <Button type="button" id="submitBtn" onClick={searchResult}>
+        Submit
+      </Button>
+      <div id="resultData"></div>
+    </>
+  );
 }
-
-export default App;

@@ -1,16 +1,27 @@
 import { getResultData } from "./apiCall";
 
-export const showResult = async () => {
-  const input = document.getElementById("inputBondText").value;
+export const showResult = async (input) => {
   try {
+    // Clearing Previous resultData
+    const resultData = document.getElementById("resultData");
+    resultData.innerHTML = "";
+
+    // Getting new result
     const result = await getResultData(input);
 
+    //Parsing new resultData
     const temp = document.createElement("html");
     temp.innerHTML = result.data;
     const pdfContainer = temp.querySelector(".pdf-container");
 
-    const resultData = document.getElementById("resultData");
-    resultData.innerHTML = pdfContainer.querySelector("font").outerHTML;
+    const SuccessMesssage = pdfContainer
+      .querySelector("font")
+      .innerHTML.split("<br>");
+
+    for (const message of SuccessMesssage) {
+      resultData.innerHTML += `<p>${message}</p>`;
+    }
+
     const table = pdfContainer.querySelector("table");
 
     // deleting Eligible Series' column from the table
@@ -27,6 +38,6 @@ export const showResult = async () => {
       resultData.appendChild(table);
     }
   } catch (error) {
-    console.error(error.message);
+    console.log(error.message);
   }
 };
