@@ -14,6 +14,7 @@ export const showTable = async (input) => {
     while (isLoading) {
       resultData.innerHTML = `<img src="loading.gif" width="100" height"100"/>`;
       result = await getResultData(input);
+      console.log(result);
       isLoading = false;
     }
     resultData.innerHTML = "";
